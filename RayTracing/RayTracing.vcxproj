@@ -113,6 +113,10 @@
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="camera.h" />
+    <ClInclude Include="hitable.h" />
+    <ClInclude Include="hitable_list.h" />
+    <ClInclude Include="material.h" />
     <ClInclude Include="ray.h" />
     <ClInclude Include="vec3.h" />
   </ItemGroup>
