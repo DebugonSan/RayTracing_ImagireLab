@@ -1,8 +1,17 @@
 ﻿  main.cpp
 c:\users\toshinori\onedrive\projects\raytracing\raytracing\vec3.h(51): warning C4244: '初期化中': 'double' から 'float' への変換です。データが失われる可能性があります。
 c:\users\toshinori\onedrive\projects\raytracing\raytracing\vec3.h(129): warning C4244: '初期化中': 'double' から 'float' への変換です。データが失われる可能性があります。
-c:\users\toshinori\onedrive\projects\raytracing\raytracing\main.cpp(6): warning C4244: '初期化中': 'double' から 'float' への変換です。データが失われる可能性があります。
-c:\users\toshinori\onedrive\projects\raytracing\raytracing\main.cpp(7): warning C4244: '引数': 'double' から 'float' への変換です。データが失われる可能性があります。
-c:\users\toshinori\onedrive\projects\raytracing\raytracing\main.cpp(7): warning C4305: '引数': 'double' から 'float' へ切り詰めます。
+c:\users\toshinori\onedrive\projects\raytracing\raytracing\hitable_list.h(20): warning C4244: '引数': 'double' から 'float' への変換です。データが失われる可能性があります。
+c:\users\toshinori\onedrive\projects\raytracing\raytracing\material.h(21): warning C4244: '初期化中': 'double' から 'float' への変換です。データが失われる可能性があります。
+c:\users\toshinori\onedrive\projects\raytracing\raytracing\material.h(39): warning C4244: '引数': 'double' から 'float' への変換です。データが失われる可能性があります。
+c:\users\toshinori\onedrive\projects\raytracing\raytracing\material.h(97): warning C4244: '=': 'double' から 'float' への変換です。データが失われる可能性があります。
+c:\users\toshinori\onedrive\projects\raytracing\raytracing\main.cpp(10): warning C4305: '引数': 'double' から 'float' へ切り詰めます。
+c:\users\toshinori\onedrive\projects\raytracing\raytracing\main.cpp(22): warning C4244: '初期化中': 'double' から 'float' への変換です。データが失われる可能性があります。
+c:\users\toshinori\onedrive\projects\raytracing\raytracing\main.cpp(23): warning C4244: '引数': 'double' から 'float' への変換です。データが失われる可能性があります。
+c:\users\toshinori\onedrive\projects\raytracing\raytracing\main.cpp(23): warning C4305: '引数': 'double' から 'float' へ切り詰めます。
+c:\users\toshinori\onedrive\projects\raytracing\raytracing\main.cpp(36): warning C4305: '引数': 'double' から 'float' へ切り詰めます。
+c:\users\toshinori\onedrive\projects\raytracing\raytracing\main.cpp(37): warning C4305: '引数': 'double' から 'float' へ切り詰めます。
+c:\users\toshinori\onedrive\projects\raytracing\raytracing\main.cpp(38): warning C4305: '引数': 'double' から 'float' へ切り詰めます。
+c:\users\toshinori\onedrive\projects\raytracing\raytracing\main.cpp(39): warning C4305: '引数': 'double' から 'float' へ切り詰めます。
   RayTracing.vcxproj -> C:\Users\Toshinori\OneDrive\Projects\RayTracing\Debug\RayTracing.exe
   RayTracing.vcxproj -> C:\Users\Toshinori\OneDrive\Projects\RayTracing\Debug\RayTracing.pdb (Partial PDB)
