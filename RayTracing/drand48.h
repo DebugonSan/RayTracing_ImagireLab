@@ -1,4 +1,6 @@
-#pragma once
+#ifndef DRAND48H
+#define DRAND48H
+
 #include<random>
 
 double drand48()
@@ -8,3 +10,5 @@ double drand48()
 	std::uniform_real_distribution<> rand48(0.0, 1.0);    // [1.0, 2.0] ”ÍˆÍ‚Ìˆê—l—”
 	return rand48(mt);
 }
+
+#endif

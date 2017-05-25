@@ -1,7 +1,7 @@
 #ifndef CAMERAH
 #define CAMERAH
+
 #include "ray.h"
-#include "drand48.h"
 
 class camera {
     public:
@@ -12,7 +12,7 @@ class camera {
 			origin = vec3(0.0, 0.0, 0.0);
 		}
         ray get_ray(float u, float v) {
-            return ray(origin, lower_left_corner + u*horizontal + v*vertical);
+            return ray(origin, lower_left_corner + u*horizontal + v*vertical - origin);
         }
 
         vec3 origin;
