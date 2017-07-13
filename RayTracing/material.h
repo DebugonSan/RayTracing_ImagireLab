@@ -5,14 +5,10 @@ struct hit_record;
 
 #include "ray.h"
 #include "hitable.h"
-#include<random>
 
 double drand48()
 {
-	std::random_device rand;     // 非決定的な乱数生成器を生成
-	std::mt19937 mt(rand());     //  メルセンヌ・ツイスタの32ビット版、引数は初期シード値
-	std::uniform_real_distribution<> rand48(0.0, 1.0);    // [1.0, 2.0] 範囲の一様乱数
-	return rand48(mt);
+	return (double(rand()) / RAND_MAX);
 }
 
 #pragma region Schlickの近似式
@@ -29,12 +25,13 @@ float schlick(float cosine, float ref_idx) {
 #pragma endregion
 
 //屈折させるためのコード
-bool refract(const vec3& v, const vec3& n, float ni_over_nt, vec3& refracted) {
-    vec3 uv = unit_vector(v);
+bool 
+refract(const vec3& v, const vec3& n, float ni_over_nt, vec3& refracted) {
+    vec3 uv = unit_vector(v);	//vベクトルを正規化
     float dt = dot(uv, n);
     float discriminant = 1.0 - ni_over_nt*ni_over_nt*(1-dt*dt);
     if (discriminant > 0) {
-        refracted = ni_over_nt*(uv - n*dt) - n*sqrt(discriminant);
+        refracted = ni_over_nt*(uv - n*dt) - n*sqrt(discriminant);	//= ex * sin' + ey * cos'
         return true;
     }
     else 
@@ -79,13 +76,31 @@ public:
 	metal(const vec3& a) : albedo(a) {}
 	virtual bool scatter(const ray& r_in, const hit_record& rec, vec3& attenuation, ray& scattered) const {
 		vec3 reflected = reflect(unit_vector(r_in.direction()), rec.normal);
-		scattered = ray(rec.p, reflected + fuzz*random_in_unit_sphere());
+		scattered = ray(rec.p, reflected);
 		attenuation = albedo;
 		return (dot(scattered.direction(), rec.normal) > 0);
 	}
 	vec3 albedo;
-	float fuzz;
 };
+
+#pragma region Chap.8_ex.cord
+/*
+
+class metal : public material {
+public:
+metal(const vec3& a, float f) : albedo(a) { if (f < 1) fuzz = f; else fuzz = 1; }
+virtual bool scatter(const ray& r_in, const hit_record& rec, vec3& attenuation, ray& scattered) const {
+	vec3 reflected = reflect(unit_vector(r_in.direction()), rec.normal);
+	scattered = ray(rec.p, reflected + fuzz*random_in_unit_sphere());
+	attenuation = albedo;
+	return (dot(scattered.direction(), rec.normal) > 0);
+}
+vec3 albedo;
+float fuzz;
+};
+
+*/
+#pragma endregion
 
 //媒体のコード
 class dielectric : public material { 
@@ -95,7 +110,7 @@ class dielectric : public material {
              vec3 outward_normal;
              vec3 reflected = reflect(r_in.direction(), rec.normal);
              float ni_over_nt;
-             //attenuation = vec3(1.0, 1.0, 0.0);	//青色のみ抜く
+             //attenuation = vec3(1.0, 1.0, 0.0);	//青色の要素のみ透過しない
 			 attenuation = vec3(1.0, 1.0, 1.0);
              vec3 refracted;
              float reflect_prob;
@@ -123,6 +138,7 @@ class dielectric : public material {
 			 //Chap.9 Code5
 			 if (drand48() < reflect_prob) {
 				 scattered = ray(rec.p, reflected);
+
 			 }
 			 else {
 				 scattered = ray(rec.p, refracted);
